@@ -1,10 +1,11 @@
 var React = require('react');
 var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
+var AddForm = require('./AddForm');
 
 function getAppState() {
 	return {
-
+		showForm: AppStore.getShowForm()
 	}
 }
 
@@ -27,12 +28,17 @@ var App = React.createClass({
 	},
 
 	render: function() {
+		if (this.state.showForm) {
+			var form = <AddForm />;
+		} else {
+			var form = '';
+		}
 		return (
 			<div>
 				<h1 className="text-center page-header">WorkoutLogger</h1>
 				<button onClick={this.onShowFormClick} className="btn btn-primary btn-block">Add Workout</button>
 				<br />
-				FORM
+				{form}
 				<br />
 				WORKOUTS
 			</div>

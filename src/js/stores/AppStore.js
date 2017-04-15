@@ -19,6 +19,9 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	removeChangeListener: function(callback) {
 		this.removeListener('change', callback);
 	},
+	getShowForm() {
+		return _showForm;
+	},
 	showForm() {
 		//console.log('show form true');
 		_showForm = true;
