@@ -1,4 +1,5 @@
 var React = require('react');
+var AppActions = require('../actions/AppActions');
 
 var AddForm = React.createClass({
 	render: function() {
@@ -32,7 +33,8 @@ var AddForm = React.createClass({
 			miles: this.refs.miles.value.trim(),
 			date: new Date()
 		};
-		console.log(workout);
+		//console.log(workout);
+		AppActions.addWorkout(workout);
 	},
 	generateId: function() {
 		var id = '';
