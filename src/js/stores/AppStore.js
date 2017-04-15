@@ -7,24 +7,33 @@ var AppAPI = require('../utils/AppAPI.js');
 var CHANGE_EVENT = 'change';
 
 var _items = [];
+var _showForm = false;
 
 var AppStore = assign({}, EventEmitter.prototype, {
-	emitChange: function(){
+	emitChange: function() {
 		this.emit(CHANGE_EVENT);
 	},
-	addChangeListener: function(callback){
+	addChangeListener: function(callback) {
 		this.on('change', callback);
 	},
-	removeChangeListener: function(callback){
+	removeChangeListener: function(callback) {
 		this.removeListener('change', callback);
+	},
+	showForm() {
+		//console.log('show form true');
+		_showForm = true;
 	}
 });
 
-AppDispatcher.register(function(payload){
+AppDispatcher.register(function(payload) {
 	var action = payload.action;
 
-	switch(action.actionType){
-		
+	switch (action.actionType) {
+		case AppConstants.SHOW_FORM:
+			AppStore.showForm();
+			// emit
+			AppStore.emit(CHANGE_EVENT);
+			break;
 	}
 
 	return true;
