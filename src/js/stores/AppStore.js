@@ -31,6 +31,9 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	},
 	addWorkout(workout) {
 		_workouts.push(workout);
+	},
+	receiveWorkouts(workouts) {
+		_workouts = workouts;
 	}
 });
 
@@ -49,6 +52,9 @@ AppDispatcher.register(function(payload) {
 			AppAPI.addWorkout(action.workout);
 			// emit
 			AppStore.emit(CHANGE_EVENT);
+			break;
+		case AppConstants.RECV_WORKOUTS:
+			AppStore.receiveWorkouts(action.workouts);
 			break;
 	}
 

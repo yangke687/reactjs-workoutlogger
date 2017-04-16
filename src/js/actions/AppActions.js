@@ -12,6 +12,12 @@ var AppActions = {
 			actionType: AppConstants.ADD_WORKOUT,
 			workout: workout
 		});
+	},
+	receiveWorkouts: function(workouts) {
+		AppDispatcher.handleViewAction({
+			actionType: AppConstants.RECV_WORKOUTS,
+			workouts: workouts
+		});
 	}
 }
 
