@@ -30,7 +30,8 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		console.log(this.state.workouts);
+    console.log(this.state.workouts);
+    const workouts = this.state.workouts || []
 		if (this.state.showForm) {
 			var form = <AddForm />;
 		} else {
@@ -43,7 +44,7 @@ var App = React.createClass({
 				<br />
 				{form}
 				<br />
-				<Workouts workouts={this.state.workouts} />
+				<Workouts workouts={workouts} />
 			</div>
 		);
 	},
